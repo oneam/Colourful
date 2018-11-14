@@ -39,9 +39,9 @@ namespace Colourful
         /// </param>
         public LinearRGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
         {
-            R = r.CheckRange(0, 1);
-            G = g.CheckRange(0, 1);
-            B = b.CheckRange(0, 1);
+            R = r;
+            G = g;
+            B = b;
             WorkingSpace = workingSpace;
         }
 

@@ -21,6 +21,8 @@
     <DocumentationFile>/bin/$(Configuration)/Colourful.xml</DocumentationFile>
     <Deterministic>True</Deterministic>
     <LangVersion>7.3</LangVersion>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\..\Utilities\SigningKeys\Synaptive.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -49,8 +51,12 @@
     <DefineConstants>$(DefineConstants);DYNAMIC</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Colourful.csproj.DotSettings" />
   </ItemGroup>
-    
+
 </Project>

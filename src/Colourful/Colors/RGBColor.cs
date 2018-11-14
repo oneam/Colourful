@@ -45,9 +45,9 @@ namespace Colourful
         /// </param>
         public RGBColor(double r, double g, double b, IRGBWorkingSpace workingSpace)
         {
-            R = r.CheckRange(0, 1);
-            G = g.CheckRange(0, 1);
-            B = b.CheckRange(0, 1);
+            R = r;
+            G = g;
+            B = b;
             WorkingSpace = workingSpace;
         }
 
@@ -127,6 +127,11 @@ namespace Colourful
         /// <seealso cref="RGBWorkingSpaces" />
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; }
+
+        /// <summary>
+        /// True when this RGBColor is in Gamut (ie. All channels are 0..1)
+        /// </summary>
+        public bool IsInGamut => R > 0.0 && R < 1.0 && G > 0.0 && G < 1.0 && B > 0.0 && B < 1.0;
 
         #endregion
 
