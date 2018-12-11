@@ -129,9 +129,17 @@ namespace Colourful
         public IRGBWorkingSpace WorkingSpace { get; }
 
         /// <summary>
-        /// True when this RGBColor is in Gamut (ie. All channels are 0..1)
+        /// True when all channels of this color are in range (0..1)
         /// </summary>
-        public bool IsInGamut => R > 0.0 && R < 1.0 && G > 0.0 && G < 1.0 && B > 0.0 && B < 1.0;
+        public bool IsInRange => R >= 0.0 && R <= 1.0 && G >= 0.0 && G <= 1.0 && B >= 0.0 && B <= 1.0;
+
+        /// <summary>
+        /// Returns a new RGBColor where all of the channels are cropped to (0..1)
+        /// </summary>
+        public RGBColor CropRange()
+        {
+            return new RGBColor(R.CropRange(0, 1), G.CropRange(0, 1), B.CropRange(0, 1), WorkingSpace);
+        }
 
         #endregion
 

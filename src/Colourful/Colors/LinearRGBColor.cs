@@ -104,13 +104,26 @@ namespace Colourful
         /// </summary>
         public IRGBWorkingSpace WorkingSpace { get; }
 
+        /// <summary>
+        /// True when all channels are in (0..1) inclusive
+        /// </summary>
+        public bool IsInRange => R >= 0.0 && R <= 1.0 && G >= 0.0 && G <= 1.0 && B >= 0.0 && B <= 1.0;
+
+        /// <summary>
+        /// Returns a new LinearRGBColor where all of the channels are cropped to (0..1)
+        /// </summary>
+        public LinearRGBColor CropRange()
+        {
+            return new LinearRGBColor(R.CropRange(0, 1), G.CropRange(0, 1), B.CropRange(0, 1), WorkingSpace);
+        }
+
         #endregion
 
         #region Equality
 
         /// <inheritdoc cref="object" />
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
-        public bool Equals(RGBColor other) =>
+        public bool Equals(LinearRGBColor other) =>
             R == other.R &&
             G == other.G &&
             B == other.B &&
