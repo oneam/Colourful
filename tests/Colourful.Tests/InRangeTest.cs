@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Xunit;
 
 namespace Colourful.Tests
@@ -44,7 +42,7 @@ namespace Colourful.Tests
         }
 
         /// <summary>
-        /// Tests <see cref="RGBColor.IsInRange" />
+        /// Tests <see cref="LinearRGBColor.IsInRange" />
         /// </summary>
         [Theory]
         [MemberData(nameof(IsInRangeData))]
